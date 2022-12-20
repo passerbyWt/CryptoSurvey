@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>cryptosurvey</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;display=swap">
+    <link rel="stylesheet" href="assets/css/Sidebar-Menu-sidebar.css">
+    <link rel="stylesheet" href="assets/css/Sidebar-Menu.css">
+    <!-- <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script> -->
+    <script src="assets/js/bower_components/abi-decoder/dist/abi-decoder.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+</head>
+
+<body>
+    <div id="wrapper">
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <div></div>
+                </li>
+                <li> <a href="#" style="color: #fcf9f9;">Profile</a></li>
+                <li style="color: #fcf9f9;"> <a href="#" style="color: #fcf9f9;">Wallet</a></li>
+                <li style="color: #fcf9f9;"> <a href="#" style="color: #fcf9f9;">Donations</a></li>
+                <li>Invite Friends</li>
+                <li>Surveys Created/Participated&nbsp;</li>
+                <li></li>
+            </ul>
+        </div>
+        <div class="page-content-wrapper"></div>
+        <nav class="navbar navbar-dark navbar-expand-md sticky-top py-3" id="mainNav">
+            <div class="container"><a class="navbar-brand d-flex align-items-center" href="/"><span class="bs-icon-sm bs-icon-circle bs-icon-primary shadow d-flex justify-content-center align-items-center me-2 bs-icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-filter-square" style="font-size: 18px;">
+                            <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"></path>
+                            <path d="M6 11.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"></path>
+                        </svg></span><span>CryptoSurvey</span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navcol-1">
+                    <ul class="navbar-nav mx-auto"></ul>
+                </div>
+                <a class="btn btn-primary shadow" role="button" href="login.html">Sign Out</a>
+            </div>
+        </nav>
+        <div class="container" style="background: rgb(39,38,46);">
+            <div class="row row-cols-1 row-cols-md-2 mx-auto" style="max-width: 900px;padding-top: 40px;">
+                <div class="col mb-5">
+                    <div class="card shadow-sm">
+                        <div class="card-body px-4 py-5 px-md-5" style="margin-bottom: -69px;">
+                            <div class="bs-icon-lg d-flex justify-content-center align-items-center mb-3 bs-icon" style="top: 1rem;right: 1rem;position: absolute;"></div>
+                            <h5 class="fw-bold card-title">Your Wallet Address</h5>
+                            <p class="text-muted card-text mb-4"><span style="color: rgb(162, 163, 189); background-color: rgb(34, 35, 54);">{{session.address}}</span>&nbsp;<br></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col mb-5">
+                    <div class="card shadow-sm">
+                        <div class="card-body px-4 py-5 px-md-5">
+                            <div class="bs-icon-lg d-flex justify-content-center align-items-center mb-3 bs-icon" style="top: 1rem;right: 1rem;position: absolute;"></div>
+                            <h5 class="fw-bold card-title">Total CSX Tokens: <span style="color: rgb(55, 234, 11);">{{session.csk}} csk</span></h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col mb-4">
+                    <div class="card shadow-sm"></div>
+                </div>
+                <div class="col mb-4">
+                    <div class="card shadow-sm"></div>
+                </div>
+            </div>
+            <div class="row row-cols-1 row-cols-md-2 mx-auto" style="max-width: 900px;padding-top: 40px;">
+                <div class="col mb-5">
+                    <div class="card shadow-sm">
+                        <div class="card-body px-4 py-5 px-md-5">
+                            <div class="bs-icon-lg d-flex justify-content-center align-items-center mb-3 bs-icon" style="top: 1rem;right: 1rem;position: absolute;"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-lightbulb text-success">
+                                    <path d="M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13a.5.5 0 0 1 0 1 .5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1 0-1 .5.5 0 0 1 0-1 .5.5 0 0 1-.46-.302l-.761-1.77a1.964 1.964 0 0 0-.453-.618A5.984 5.984 0 0 1 2 6zm6-5a5 5 0 0 0-3.479 8.592c.263.254.514.564.676.941L5.83 12h4.342l.632-1.467c.162-.377.413-.687.676-.941A5 5 0 0 0 8 1z"></path>
+                                </svg></div>
+                            <h5 class="fw-bold card-title">Create your survey</h5>
+                            <p class="text-muted card-text mb-4">We offer a variety of surveys with multiple ways to incentivize participants to complete your survey.&nbsp;&nbsp;<br><br></p><button class="btn btn-primary shadow" type="button" data-bs-target="#create-survey-modal" data-bs-toggle="modal">Get started</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col mb-5">
+                    <div class="card shadow-sm">
+                        <div class="card-body px-4 py-5 px-md-5">
+                            <div class="bs-icon-lg d-flex justify-content-center align-items-center mb-3 bs-icon" style="top: 1rem;right: 1rem;position: absolute;"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-cash text-success">
+                                    <path d="M8 10a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"></path>
+                                    <path d="M0 4a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V4zm3 0a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2V6a2 2 0 0 1-2-2H3z"></path>
+                                </svg></div>
+                            <h5 class="fw-bold card-title">Participate in a decentralized survey&nbsp;</h5>
+                            <p class="text-muted card-text mb-4">You can earn rewards by participating in different surveys. Your information can be never accessed by a third party.&nbsp;</p><button class="btn btn-primary shadow" type="button" data-bs-target="#participate-survey" data-bs-toggle="modal">Get started</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col mb-4">
+                    <div class="card shadow-sm"></div>
+                </div>
+                <div class="col mb-4">
+                    <div class="card shadow-sm"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="create-survey-modal">
+        <div class="modal-dialog modal-lg" role="document">
+            <form method="POST" action="/create">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" style="color: rgb(8,8,8);">Create Your Survey</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                
+                <div class="modal-body" style="color: rgb(6,5,5);">
+                    <p>Survey Name</p><input type="text" name="name">
+                    <div>
+                        <p>Reward type is Lotto?</p>
+                        <input type="radio" id="1" name="isLotto" value="yes" checked>
+                        <label for="1">yes</label>
+                        <input type="radio" id="2" name="isLotto" value="no">
+                        <label for="2">no</label>
+                      </div>
+                    <p><br>Initial Deposit</p><input class="border rounded-pill" type="number" value="0" style="padding-left: 10px;" name="reward"> CSKs
+                    <p>Duration of this survey: </p><input type="text" name="duration"> mins
+                    <p>Enterance Fee: </p><input type="text" name="enteranceFee"> CSKs
+                    <p>Your questionnaire&nbsp;</p><textarea placeholder="Please enter your questionnaire here. Each new line line is a new question. Each option is follow by a &quot;;&quot; sign.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         For example:                                                                                                                                                                                                                                                                                                                                                                   What is your favorite color?;Red;Blue;Yellow                                                                                                                                                                                                                                             What is your favorite website to visit?;pintrest;github" rows="7" cols="70"></textarea>
+                
+                </div>
+                <div class="modal-footer">
+                    <form method="POST" action="/mainpage">
+                    <button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button>
+                    </form>
+                    
+                    <button class="btn btn-primary" type="submit">Next</button>
+                </div>
+            </div>
+            </form>
+        </div>
+    </div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="participate-survey">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" style="color: rgb(8,8,8);">Participate in Survey</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    {% if isOwner %}
+                    {% for n in data %}
+                    <form method="POST" action="/stop">
+                    <p>
+                    <div class="card">
+                        <div class="card-body" style="margin-bottom: 3px;">
+                            <h4 class="card-title">Survey name: {{n['name']}}</h4>
+                            <input type="hidden" name="id" value="{{n['id']}}">
+                            <p class="card-text">Reward Pool: 
+                                <span style="color: rgb(52, 193, 16);">{{n['reward']}}</span>
+                                <br>isLotto: 
+                                <span style="color: rgb(218, 19, 19);">{{n['isLotto']}}</span>
+                                <br><span style="color: rgb(247, 242, 242);">Total Participants: {{n['usercount']}}</span>
+                                <br><br>
+                            </p>
+                            <br><span style="color: rgb(247, 242, 242);">End time: {{n['surveyEndTime']}}</span>
+                            <p>
+                            <br><span style="color: rgb(247, 242, 242);">Enterance Fee: {{n['enteranceFee']}}</span>
+                            <p>
+                            <button class="btn btn-primary" type="submit" style="margin-right: 609px;margin-bottom: 8px;margin-left: 15px;">Stop this survey</button>
+                            
+                        </div>
+                    </div>
+                    </form>
+                    {% endfor %}
+                    {% else %}
+                    {% for n in data %}
+                    <form method="POST" action="/report">
+                    <p>
+                    <div class="card">
+                        <div class="card-body" style="margin-bottom: 3px;">
+                            <h4 class="card-title">Survey name: {{n['name']}}</h4>
+                            <input type="hidden" name="id" value="{{n['id']}}">
+                            <p class="card-text">Reward Pool: 
+                                <span style="color: rgb(52, 193, 16);">{{n['reward']}}</span>
+                                <br>isLotto: 
+                                <span style="color: rgb(218, 19, 19);">{{n['isLotto']}}</span>
+                                <br><span style="color: rgb(247, 242, 242);">Total Participants: {{n['usercount']}}</span>
+                                <br><br>
+                            
+                            </p>
+                            <br><span style="color: rgb(247, 242, 242);">End time: {{n['surveyEndTime']}}</span>
+                            <p>
+                            <br><span style="color: rgb(247, 242, 242);">Enterance Fee: {{n['enteranceFee']}}</span>
+                            <p>Your report:</p>
+                            <p>
+                            <input type="text" name="comment">
+                            <p>
+                            <button class="btn btn-primary" type="submit" style="margin-right: 609px;margin-bottom: 8px;margin-left: 15px;">Submit</button>
+                            
+                        </div>
+                    </div>
+                    </form>
+                    {% endfor %}
+                    {% endif %}
+
+                    
+                </div>
+                <div class="modal-footer">
+                    <form method="POST" action="/mainpage">
+                    <button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button>
+                    </form>
+            </div>
+        </div>
+    </div>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+    <script src="assets/js/bold-and-dark.js"></script>
+    <script src="assets/js/Sidebar-Menu.js"></script>
+     <script src="assets/js/survey.js"></script>
+</body>
+
+</html>
